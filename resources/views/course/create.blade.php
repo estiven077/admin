@@ -1,26 +1,27 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="{{route('course.store')}}" method="POST" enctype="multipart/form-data">
+@extends('layouts.app')
 
-    @csrf
+@section('content')
 
-    <label>
-        Numero de Curso: 
-        <input type="number" name="course_number">
-    </label>
-    <br><br>
-    <label>
-        day: 
-        <input type="date" name="day">
-    </label>
-    <br><br>
+    <h1>Formulario Cursos</h1>
+    <form action="{{ route('course.store') }}" method="POST">
 
-    <label for="area_id">Area: </label>
+        @csrf
+
+        <label>
+            Numero de curso:
+            <br>
+            <input type="number" name="course_number">
+        </label>
+        <br><br>
+
+        <label>
+            Dia:
+            <br>
+            <input type="date" name="day">
+        </label>
+        <br><br>
+
+        <label for="area_id">Area: </label>
         <select name="area_id" id="area_id" class="form-control">
             <option value="">Selecione area</option>
             @foreach($areas as $area)
@@ -28,11 +29,10 @@
                     {{$area->name}}
                 </option>
             @endforeach
-
         </select>
-
         <br><br>
-    <label for="training_center_id">Centro de Formacion: </label>
+
+        <label for="training_center_id">Centro de Formacion: </label>
         <select name="training_center_id" id="training_center_id" class="form-control">
             <option value="">Selecione un centro de formacion</option>
             @foreach($training_centers as $training_center)
@@ -42,12 +42,12 @@
             @endforeach
 
         </select>
+
         <br><br>
-        
 
 
-    <button type="submit">Enviar Formulario</button>
+        <button type="submit">Enviar Formulario</button>
+
     </form>
-</body>
-</html>
 
+    @endsection
