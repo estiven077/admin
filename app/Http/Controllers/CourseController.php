@@ -10,6 +10,14 @@ use App\Models\Area;
 
 class CourseController extends Controller
 {
+     public function index(){
+
+        $courses=Course::all();
+
+        return view('course.index',compact('courses'));
+
+    }
+
     public function create(){
         $training_centers = Training_center::all();
         $areas = Area::all();

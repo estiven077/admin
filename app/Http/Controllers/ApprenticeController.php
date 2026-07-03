@@ -9,6 +9,14 @@ use App\Models\Course;
 
 class ApprenticeController extends Controller
 {
+     public function index(){
+
+        $apprentices=Apprentice::with('course')->orderBy('id','desc')->get();
+
+        return view('apprendice.index',compact('apprendices'));
+
+    }
+
     public function create(){
         $courses = Course::all();
         $computers = Computer::all();
