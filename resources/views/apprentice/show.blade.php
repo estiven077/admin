@@ -23,9 +23,16 @@
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label class="fw-bold">correoElectronico</label>
+                        <label class="fw-bold">Curso</label>
                         <div class="form-control">
-                            {{ $product['email'] }}
+                            {{ $apprentice['course_id'] }}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="fw-bold">Computador</label>
+                        <div class="form-control">
+                            {{ $apprentice['computer_id'] }}
                         </div>
                     </div>
 
@@ -34,44 +41,26 @@
                 <div class="mb-3">
                     <label class="fw-bold">Nombre</label>
                     <div class="form-control">
-                        {{ $product['nombre'] }}
+                        {{ $apprentice['name'] }}
                     </div>
                 </div>
 
                 <div class="mb-3">
-                    <label class="fw-bold">Descripción</label>
-                    <textarea class="form-control" rows="3" readonly>{{ $product['descripcion'] }}</textarea>
+                    <label class="fw-bold">Email</label>
+                    <div class="form-control">
+                        {{ $apprentice['email'] }}
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="fw-bold">Numero de Celular</label>
+                    <div class="form-control">
+                        {{ $apprentice['cell_number'] }}
+                    </div>
                 </div>
 
                 <div class="row">
 
-                    <div class="col-md-3 mb-3">
-                        <label class="fw-bold">Precio</label>
-                        <div class="form-control text-success fw-bold">
-                            ${{ number_format($product['precio'], 0, ',', '.') }}
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 mb-3">
-                        <label class="fw-bold">Cantidad</label>
-                        <div class="form-control">
-                            {{ $product['cantidad'] }}
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 mb-3">
-                        <label class="fw-bold">Peso</label>
-                        <div class="form-control">
-                            {{ $product['peso'] }} g
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 mb-3">
-                        <label class="fw-bold">Tamaño</label>
-                        <div class="form-control">
-                            {{ $product['tamano'] }} cm
-                        </div>
-                    </div>
 
                 </div>
 
@@ -82,14 +71,14 @@
                     <div class="col-md-6">
                         <label class="fw-bold">Fecha de creación</label>
                         <div class="form-control">
-                            {{ \Carbon\Carbon::parse($product['created_at'])->format('d/m/Y H:i') }}
+                            {{ \Carbon\Carbon::parse($apprentice['created_at'])->format('d/m/Y H:i') }}
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <label class="fw-bold">Última actualización</label>
                         <div class="form-control">
-                            {{ \Carbon\Carbon::parse($product['updated_at'])->format('d/m/Y H:i') }}
+                            {{ \Carbon\Carbon::parse($apprentice['updated_at'])->format('d/m/Y H:i') }}
                         </div>
                     </div>
 
@@ -111,6 +100,7 @@
              </a> --}}
 
         </div>
+        <br>
 
 
     </div>

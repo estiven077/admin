@@ -3,25 +3,37 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Computer; 
+use App\Models\Computer;
 
 class ComputerController extends Controller
 {
-     public function index(){
-
+    public function index(){
         $computers=Computer::all();
 
-        return view('computer.index',compact('computers'));
-
+        return view('computer.index', compact('computers'));
     }
+
+
 
     public function create(){
-        return view('computer.create'); 
+        
+        return view('computer.create');
     }
 
-    public function store(Request $request){
-        $computer = Computer::create($request->all());
 
+    public function store(Request $request){
+
+        $computer = Computer::create($request->all());
+        
         return $computer;
+    }
+
+
+
+    public function show ($id){
+
+        $computer = Computer::find($id);
+         
+        return view('computer.show',compact('computer'));
     }
 }
