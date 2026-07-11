@@ -85,6 +85,7 @@
         <a href="{{ route('course.index') }}" class="btn btn-secondary">
             <i class="bi bi-arrow-left"></i> Volver
         </a>
+        
 
     </div>
     <br>

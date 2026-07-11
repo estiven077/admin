@@ -9,7 +9,8 @@ use App\Models\Course;
 
 class ApprenticeController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $apprentices=Apprentice::all();
 
         return view('apprentice.index', compact('apprentices'));
@@ -27,7 +28,8 @@ class ApprenticeController extends Controller
 
 
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
         $apprentice = Apprentice::create($request->all());
 
@@ -42,5 +44,25 @@ class ApprenticeController extends Controller
          
         return view('apprentice.show',compact('apprentice'));
     }
+
+    public function edit(Apprentice $apprentice)
+    
+    { //Encuentro el Curso
+
+        return view('apprentice.edit', compact('apprentice'));
+    }
+
+
+
+         public function update(Request $request, Apprentice $apprentice)
+{
+    $apprentice->name = $request->name;
+    $apprentice->email = $request->email;
+    $apprentice->cell_number = $request->cell_number; 
+    $apprentice->save();
+
+    return redirect()->route('apprentice.index');
+}
+
 
 }

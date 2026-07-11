@@ -39,5 +39,25 @@ class CourseController extends Controller
         $course = Course::find($id);
          
         return view('course.show',compact('course'));
+
+
     }
+     public function edit(Course $course)
+    { //Encuentro el Curso
+
+
+     return view('course.edit', compact('course'));
+    }
+
+
+     public function update(Request $request, Course $course)
+{
+    $course->course_number = $request->course_number; 
+    $course->day = $request->day;                    
+    $course->area_id = $request->area_id;             
+    $course->save();
+
+    return redirect()->route('curso.index');
+}
+    
 }

@@ -40,4 +40,23 @@ class TeacherController extends Controller
          
         return view('teacher.show',compact('teacher'));
     }
+
+     public function edit(Teacher $teacher)
+    { //Encuentro el profesor
+
+        return view('teacher.edit', compact('teacher'));
+    }
+
+
+
+         public function update(Request $request, Teacher $teacher){
+
+        $curso->name = $request->name;
+        $curso->descripcion = $request->descripcion;
+        $curso->save();
+
+        return redirect()->route('curso.index');
+
+      }
+
 }

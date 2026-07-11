@@ -28,10 +28,31 @@ class AreaController extends Controller
 
 
 
-    public function show ($id){
+    public function show ($id)
+    
+    {
 
         $area = Area::find($id);
          
         return view('area.show',compact('area'));
     }
+
+     public function edit(Area $area)
+    { //Encuentro el Curso
+
+        return view('area.edit', compact('area'));
+    }
+
+
+
+         public function update(Request $request, Area $area)
+         {
+            $area->name = $request->name; 
+            $area->save();
+
+    
+            return redirect()->route('area.index'); 
+            }
+
+
 }
