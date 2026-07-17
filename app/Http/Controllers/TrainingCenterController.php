@@ -27,26 +27,38 @@ class TrainingCenterController extends Controller
     }
 
 
-    public function show ($id){
 
-        $training_center = Training_center::find($id);
-         
-        return view('training_center.show',compact('training_center'));
+    public function show(Training_center $training_center){
+
+    //$training_center = Training_center::find($id);
+
+    return view('training_center.show', compact('training_center'));
     }
 
-    // El método que te pedía el error en pantalla para abrir el formulario
-    public function edit($id){
-        $training_center = Training_center::find($id);
 
-        return view('training_center.edit', compact('training_center'));
+
+    public function edit(Training_center $training_center){
+
+    //Encuentro el Centro de Formación
+    return view('training_center.edit', compact('training_center'));
     }
 
-    // El método que necesitas para procesar los cambios en la base de datos
-    public function update(Request $request, $id){
-        $training_center = Training_center::find($id);
-        $training_center->update($request->all());
 
-        // Redirige al index de centros una vez guardado
+
+    public function update(Request $request, Training_center $training_center){
+
+        $training_center->name = $request->name;
+        $training_center->location = $request->location;
+        $training_center->save();
+
         return redirect()->route('training_center.index');
     }
+
+    public function destroy(Training_center $training_center){
+
+        $training_center->delete();
+
+        return redirect()->route('training_center.index');
+    }
+
 }

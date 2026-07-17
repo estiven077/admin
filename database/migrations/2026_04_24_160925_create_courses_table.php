@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('day');
 
             //laves foraneas
-            $table->unsignedBigInteger('area_id');
+            $table->unsignedBigInteger('area_id')>nullable();
             $table->foreign('area_id')
                 ->references('id') 
                 ->on('areas') 
@@ -25,7 +25,7 @@ return new class extends Migration
                 ->onUpdate('cascade') 
             ;
 
-            $table->unsignedBigInteger('training_center_id');
+            $table->unsignedBigInteger('training_center_id')>nullable();
             $table->foreign('training_center_id')
                 ->references('id') 
                 ->on('training_centers') 

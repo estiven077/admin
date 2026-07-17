@@ -9,8 +9,7 @@ use App\Models\Course;
 
 class ApprenticeController extends Controller
 {
-    public function index()
-    {
+    public function index(){
         $apprentices=Apprentice::all();
 
         return view('apprentice.index', compact('apprentices'));
@@ -28,8 +27,7 @@ class ApprenticeController extends Controller
 
 
 
-    public function store(Request $request)
-    {
+    public function store(Request $request){
 
         $apprentice = Apprentice::create($request->all());
 
@@ -38,31 +36,41 @@ class ApprenticeController extends Controller
 
 
 
-    public function show ($id){
+    public function show (Apprentice $apprentice){
 
-        $apprentice=Apprentice::find($id);
+        //$apprentice=Apprentice::find($id);
          
         return view('apprentice.show',compact('apprentice'));
     }
 
-    public function edit(Apprentice $apprentice)
-    
-    { //Encuentro el Curso
 
+
+    public function edit(Apprentice $apprentice){
+        
+        //Encuentro el Aprendriz
         return view('apprentice.edit', compact('apprentice'));
     }
 
 
 
-         public function update(Request $request, Apprentice $apprentice)
-{
-    $apprentice->name = $request->name;
-    $apprentice->email = $request->email;
-    $apprentice->cell_number = $request->cell_number; 
-    $apprentice->save();
+    public function update(Request $request, Apprentice $apprentice){
+        
+        $apprentice->name = $request->name;
+        $apprentice->email = $request->email;
+        $apprentice->cell_number = $request->cell_number;
+        $apprentice->save();
+
+        return redirect()->route('apprentice.index');
+        }
+
+
+        //Destroy se encuentra el registro para luego eliminarlo..
+    public function destroy(Apprentice $apprentice){
+
+    $apprentice->delete();
 
     return redirect()->route('apprentice.index');
+    }
 }
 
 
-}

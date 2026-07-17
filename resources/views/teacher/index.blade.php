@@ -7,10 +7,6 @@
 
 <div class="container">
 
-    <a href="{{ route('teacher.create') }}" class="btn btn-success mb-3">
-        <i class="bi bi-plus-circle"></i> Nuevo Profesor
-    </a>
-
     <table id="idTeacher" class="table table-striped table-bordered" style="width:100%">
 
         <thead>
@@ -20,14 +16,18 @@
                 <th>Email</th>
                 <th>Area</th>
                 <th>Training Center</th>
-                <th>Acción</th>
+                <th colspan="3">Acción</th>
             </tr>
         </thead>
 
-    <tbody>
+        <tbody>
+            <a href="{{ route('teacher.create') }}" class="btn btn-success mb-3">
+                <i class="bi bi-plus-circle"></i> Nuevo Instructor </a>
+
             @foreach ($teachers as $teacher)
 
-            <tr>
+                <tr>
+
                     <td>{{ $teacher->id }}</td>
                     <td>{{ $teacher->name }}</td>
                     <td>{{ $teacher->email }}</td>
@@ -35,16 +35,19 @@
                     <td>{{ $teacher->training_center_id }}</td>
 
                     <td>
-                        <a href="{{ route('teacher.show', $teacher->id) }}">Mostrar</a> &nbsp;&nbsp;
-                        
-                        <a href="{{ route('teacher.edit', $teacher->id) }}">Editar</a> &nbsp;&nbsp;
+                        <a href="{{ route('teacher.show', $teacher->id) }}">Mostrar</a>
+                    </td>
 
-                        <form action="{{ route('teacher.destroy', $teacher->id) }}" method="POST" style="display:inline;">
+                    <td>
+                        <a href="{{ route('teacher.edit', $teacher->id) }}">Editar</a>
+                    </td>
+                    
+                    <td>
+                        <form action="{{ route('teacher.destroy', $teacher->id) }}" method="POST">
                             @csrf
-                            @method('delete')
-                            <!-- Solo este botón tiene el color rojo con btn-danger -->
-                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar este instructor?')">Eliminar</button>
-                        </form> 
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                        </form>
                     </td>
 
                 </tr>

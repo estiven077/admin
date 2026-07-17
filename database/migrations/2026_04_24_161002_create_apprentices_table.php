@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedinteger('cell_number'); 
             
             //laves foraneas
-            $table->unsignedBigInteger('course_id');
+            $table->unsignedBigInteger('course_id')>nullable();
             $table->foreign('course_id')
                 ->references('id') 
                 ->on('courses') 
@@ -26,7 +26,7 @@ return new class extends Migration
                 ->onUpdate('cascade') 
             ;
 
-            $table->unsignedBigInteger('computer_id');
+            $table->unsignedBigInteger('computer_id')>nullable();
             $table->foreign('computer_id')
                 ->references('id') 
                 ->on('computers') 

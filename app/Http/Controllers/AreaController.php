@@ -28,31 +28,37 @@ class AreaController extends Controller
 
 
 
-    public function show ($id)
-    
-    {
-
-        $area = Area::find($id);
+    public function show (Area $area){
+        
+        //$area = Area::find($id);
          
         return view('area.show',compact('area'));
     }
 
-     public function edit(Area $area)
-    { //Encuentro el Curso
 
+
+    public function edit(Area $area){
+
+        //Encuentro el Area
         return view('area.edit', compact('area'));
     }
 
 
 
-         public function update(Request $request, Area $area)
-         {
-            $area->name = $request->name; 
-            $area->save();
+    public function update(Request $request, Area $area){
+        
+        $area->name = $request->name;
+        $area->save();
 
-    
-            return redirect()->route('area.index'); 
-            }
+        return redirect()->route('area.index');
+    }
 
 
+    //Destroy se encuentra el registro para luego eliminarlo..
+    public function destroy(Area $area){
+
+    $area->delete();
+
+    return redirect()->route('area.index');
+    }
 }

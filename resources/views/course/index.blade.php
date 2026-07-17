@@ -5,12 +5,7 @@
 <h1>Lista de Cursos</h1>
 <br>
 
-<div class="container">
-
-    
-    <a href="{{ route('course.create') }}" class="btn btn-success mb-3">
-        <i class="bi bi-plus-circle"></i> Nuevo Curso
-    </a>
+ <div class="container">
 
     <table id="idCourse" class="table table-striped table-bordered" style="width:100%">
 
@@ -21,34 +16,40 @@
                 <th>Day</th>
                 <th>Area</th>
                 <th>Training Center</th>
-                <th>Acción</th>
+                <th colspan="3">Acción</th>
             </tr>
         </thead>
 
         <tbody>
+            <a href="{{ route('course.create') }}" class="btn btn-success mb-3">
+                <i class="bi bi-plus-circle"></i> Nuevo Curso </a>
 
             @foreach ($courses as $course)
 
-            <tr>
+                <tr>
+
                     <td>{{ $course->id }}</td>
                     <td>{{ $course->course_number }}</td>
                     <td>{{ $course->day }}</td>
                     <td>{{ $course->area_id }}</td>
                     <td>{{ $course->training_center_id }}</td>
 
-                   
-                        <a href="{{ route('course.show', $course->id) }}">Mostrar</a> &nbsp;&nbsp;
-
-                        <a href="{{ route('course.edit', $course->id) }}">Editar</a> &nbsp;&nbsp;
-
-                        <form action="{{ route('course.destroy', $course->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar este curso?')">Eliminar</button>
-                        </form> 
+                    <td>
+                        <a href="{{ route('course.show', $course->id) }}">Mostrar</a>
                     </td>
 
-                </tr>
+                    <td>
+                        <a href="{{ route('course.edit', $course->id) }}">Editar</a>
+                    </td>
+
+                    <td>
+                        <form action="{{ route('course.destroy', $course->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                        </form>
+                    </td>
+             </tr>
 
             @endforeach
 
