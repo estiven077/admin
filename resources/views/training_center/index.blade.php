@@ -48,6 +48,4 @@
         </table>
         <br>
     </div>
-
-
- @endsection
+@endsection

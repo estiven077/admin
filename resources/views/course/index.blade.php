@@ -5,7 +5,7 @@
 <h1>Lista de Cursos</h1>
 <br>
 
- <div class="container">
+<div class="container">
 
     <table id="idCourse" class="table table-striped table-bordered" style="width:100%">
 
@@ -31,8 +31,8 @@
                     <td>{{ $course->id }}</td>
                     <td>{{ $course->course_number }}</td>
                     <td>{{ $course->day }}</td>
-                    <td>{{ $course->area_id }}</td>
-                    <td>{{ $course->training_center_id }}</td>
+                    <td>{{ $course->area?->name }}</td>
+                    <td>{{ $course->trainingCenter?->name }}</td>
 
                     <td>
                         <a href="{{ route('course.show', $course->id) }}">Mostrar</a>
@@ -49,7 +49,7 @@
                             <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                         </form>
                     </td>
-             </tr>
+                </tr>
 
             @endforeach
 

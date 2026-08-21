@@ -49,6 +49,132 @@
         </button>
     </div>
 
+    <!-- =================== SECCIÓN: QUIÉNES SOMOS =================== -->
+<div id="quienes-somos" class="my-5">
+
+    <h2 class="text-center mb-4 fw-bold text-success">
+        ¿Quiénes Somos?
+    </h2>
+
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card border-0 shadow-sm p-4">
+                <div class="card-body text-center">
+
+                    <h3 class="fw-bold mb-3">
+                        Sistema de Administración SENA
+                    </h3>
+
+                    <p class="text-muted">
+                        Admin SENA es un sistema diseñado para facilitar la
+                        administración y organización de la información
+                        relacionada con la formación del SENA.
+                    </p>
+
+                    <p class="text-muted">
+                        Nuestro sistema permite gestionar de manera sencilla
+                        aprendices, instructores, cursos, áreas, centros de
+                        formación y computadores, manteniendo la información
+                        organizada y accesible.
+                    </p>
+
+                    <div class="row mt-4">
+
+                        <div class="col-md-4 mb-3">
+                            <div class="p-3">
+                                <i class="fas fa-users text-success fa-2x mb-2"></i>
+                                <h5 class="fw-bold">Aprendices</h5>
+                                <p class="text-muted">
+                                    Administración de la información de los
+                                    aprendices.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <div class="p-3">
+                                <i class="fas fa-chalkboard-teacher text-success fa-2x mb-2"></i>
+                                <h5 class="fw-bold">Instructores</h5>
+                                <p class="text-muted">
+                                    Gestión de instructores y su información
+                                    relacionada.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <div class="p-3">
+                                <i class="fas fa-book text-success fa-2x mb-2"></i>
+                                <h5 class="fw-bold">Formación</h5>
+                                <p class="text-muted">
+                                    Gestión de cursos, áreas y centros de
+                                    formación.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <!-- =================== SECCIÓN: ANUNCIOS / OFERTAS =================== -->
+    <div class="my-5">
+        <h2 class="text-center mb-4 fw-bold text-success">Anuncios y Ofertas Educativas</h2>
+        
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            
+            <!-- Anuncio 1 -->
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="{{ asset('img/anuncio1.jpg') }}" class="card-img-top" alt="Anuncio 1" style="height: 220px; object-fit: cover;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Área de Salud</h5>
+                        <p class="card-text text-muted flex-grow-1">
+                            Apertura de inscripciones para programas técnicos y tecnológicos en el área de la salud. ¡Forma parte del sector productivo!
+                        </p>
+                        <a href="#" class="btn btn-outline-success mt-auto w-100 fw-bold">Ver más</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Anuncio 2  -->
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="{{ asset('img/anuncio2.jpg') }}" class="card-img-top" alt="Anuncio 2" style="height: 220px; object-fit: cover;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Sector Agrícola y Turismo</h5>
+                        <p class="card-text text-muted flex-grow-1">
+                            Conoce las nuevas convocatorias para proyectos agroindustriales y de turismo en la región.
+                        </p>
+                        <a href="#" class="btn btn-outline-success mt-auto w-100 fw-bold">Ver más</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Anuncio 3 -->
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="{{ asset('img/anuncio3.jpg') }}" class="card-img-top" alt="Anuncio 3" style="height: 220px; object-fit: cover;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Tecnología en ADSO</h5>
+                        <p class="card-text text-muted flex-grow-1">
+                            Formación en Análisis y Desarrollo de Software. Desarrolla competencias en tecnologías web, móviles y bases de datos.
+                        </p>
+                        <a href="#" class="btn btn-outline-success mt-auto w-100 fw-bold">Ver más</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <hr class="my-5">
+
     <!-- =================== SECCIÓN: MISIÓN Y VISIÓN =================== -->
     <div class="row g-4 mb-5">
         <!-- Misión -->

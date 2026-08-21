@@ -10,7 +10,8 @@ use App\Models\Training_center;
 class TeacherController extends Controller
 {
     public function index(){
-        $teachers=Teacher::all();
+       // Carga los instructores trayendo su área y centro de formación
+        $teachers = Teacher::with(['area', 'training_center'])->get();
 
         return view('teacher.index', compact('teachers'));
     }

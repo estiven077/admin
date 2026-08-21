@@ -7,20 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Training_center extends Model
 {
+    use HasFactory;
 
     protected $fillable = [
         'name',
-        'location',
+        'email',
+        'area_id',
+        'training_center_id',
     ];
 
-
-    use HasFactory;
-    public function courses(){
-        return $this->hasMany('App\Models\Course');
+    public function area()
+    {
+        return $this->belongsTo('App\Models\Area', 'area_id');
     }
 
-    public function teachers(){
-        return $this->hasMany('App\Models\Teacher');
+    public function trainingCenter()
+    {
+        return $this->belongsTo('App\Models\Training_center', 'training_center_id');
     }
-
 }

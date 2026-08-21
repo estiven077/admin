@@ -9,7 +9,7 @@
                 <p>Academia<br>
                 Dirección: Bogotá<br>
                 Teléfono: +57 354 874 69 54<br>
-                Correo electrónico: [Tu correo electrónico]</p>
+                Correo electrónico: [mquinayas07@gmail.com]</p>
             </div>
             <div class="col-md-6">
                 <h5>Síguenos</h5>

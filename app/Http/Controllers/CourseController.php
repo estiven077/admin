@@ -9,10 +9,12 @@ use App\Models\Area;
 
 class CourseController extends Controller
 {
-    public function index(){
-        $courses=Course::all();
+    public function index()
+    {
+    // Carga los cursos junto con sus relaciones de área y centro de formación
+    $courses = Course::with(['area', 'training_Center'])->get();
 
-        return view('course.index', compact('courses'));
+    return view('course.index', compact('courses'));
     }
 
 

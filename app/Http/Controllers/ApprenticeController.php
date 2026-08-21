@@ -9,13 +9,14 @@ use App\Models\Course;
 
 class ApprenticeController extends Controller
 {
-    public function index(){
-        $apprentices=Apprentice::all();
+    public function index()
+    {
+    // Carga los aprendices junto con sus relaciones de curso y computador
+    $apprentices = Apprentice::with(['course', 'computer'])->get();
 
-        return view('apprentice.index', compact('apprentices'));
-    }
+    return view('apprentice.index', compact('apprentices'));
 
-
+}
 
     public function create(){
 

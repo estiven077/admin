@@ -1,10 +1,9 @@
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #16780c">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #16780c;">
     <div class="container-fluid">
 
-        <!-- LÍNEA CORREGIDA: El logo ahora lleva al Home al hacer clic -->
+        <!-- LOGO SENA -->
         <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}">
-            <img src="https://www.sena.edu.co/Paginas/img/logo-sena-blanco.png" alt="logo_sena" width="50" height="50" class="me-2">
-            
+            <img src="https://www.sena.edu.co/Paginas/img/logo-sena-blanco.png" alt="logo_sena" width="45" height="45" class="me-2">
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -14,39 +13,25 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link " href="{{ url('area/create') }}">Área</a>
-                </li>
+            
+            <!-- ELEMENTOS DEL MENÚ (IZQUIERDA) -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-lg-center">
+                
+                <!-- 1. QUIÉNES SOMOS -->
+                 <li class="nav-item">
+                <a class="nav-link text-white fw-bold" href="{{ route('home') }}#quienes-somos">Quiénes Somos</a>
+            </li>
+                
 
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('training_center/create') }}">Centro</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('computer/create') }}">Computador</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('course/create') }}">Curso</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('teacher/create') }}">Instructor</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('apprentice/create') }}">Aprendiz</a>
-                </li>
-
+                <!-- 2. ADMINISTRACIÓN (Desplegable solo con las 6 Tablas/Listados) -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" role="button"
+                    <a class="nav-link dropdown-toggle text-white fw-bold" href="#" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        Listados
+                        Administración
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{{ route('area.index') }}">Áreas</a></li>
-                        <li><a class="dropdown-item" href="{{ route('training_center.index') }}">Centros</a></li>
+                        <li><a class="dropdown-item" href="{{ route('training_center.index') }}">Centros de Formación</a></li>
                         <li><a class="dropdown-item" href="{{ route('computer.index') }}">Computadores</a></li>
                         <li><a class="dropdown-item" href="{{ route('course.index') }}">Cursos</a></li>
                         <li><a class="dropdown-item" href="{{ route('teacher.index') }}">Instructores</a></li>
@@ -54,6 +39,31 @@
                     </ul>
                 </li>
             </ul>
+
+            <!--BUSCADOR + INICIAR SESIÓN -->
+            <div class="d-flex align-items-center flex-column flex-lg-row">
+                
+                <!-- BUSCADOR -->
+                <form class="d-flex me-lg-3 mb-2 mb-lg-0" role="search" action="#" method="GET">
+                    <div class="input-group">
+                        <input class="form-control form-control-sm" type="search" placeholder="Buscar..." aria-label="Buscar" name="query">
+                        <button class="btn btn-outline-light btn-sm" type="submit">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- INICIAR SESIÓ -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-white fw-bold px-0 px-lg-2" href="{{ url('/login') }}">
+                            Iniciar Sesión
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
         </div>
     </div>
 </nav>
