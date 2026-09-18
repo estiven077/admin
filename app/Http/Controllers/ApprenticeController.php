@@ -9,16 +9,20 @@ use App\Models\Course;
 
 class ApprenticeController extends Controller
 {
-    public function index()
+
+    public function index(Request $request)
     {
-    // Carga los aprendices junto con sus relaciones de curso y computador
-    $apprentices = Apprentice::with(['course', 'computer'])->get();
+        $query = $request->input('search');
 
-    return view('apprentice.index', compact('apprentices'));
+        $apprentices = Apprentice::when($query, function ($q) use ($query) {
+            return $q->where('name', 'LIKE', "%{$query}%");
+        })->get();
 
-}
+        return view('apprentice.index', compact('apprentices'));
+    }
 
-    public function create(){
+    public function create()
+    {
 
         $courses = Course::all();
         $computers = Computer::all();
@@ -28,7 +32,8 @@ class ApprenticeController extends Controller
 
 
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
         $apprentice = Apprentice::create($request->all());
 
@@ -37,41 +42,44 @@ class ApprenticeController extends Controller
 
 
 
-    public function show (Apprentice $apprentice){
+    public function show(Apprentice $apprentice)
+    {
 
         //$apprentice=Apprentice::find($id);
-         
-        return view('apprentice.show',compact('apprentice'));
+
+        return view('apprentice.show', compact('apprentice'));
     }
 
 
 
-    public function edit(Apprentice $apprentice){
-        
+    public function edit(Apprentice $apprentice)
+    {
+
         //Encuentro el Aprendriz
         return view('apprentice.edit', compact('apprentice'));
     }
 
 
 
-    public function update(Request $request, Apprentice $apprentice){
-        
+    public function update(Request $request, Apprentice $apprentice)
+    {
+
         $apprentice->name = $request->name;
         $apprentice->email = $request->email;
         $apprentice->cell_number = $request->cell_number;
         $apprentice->save();
 
         return redirect()->route('apprentice.index');
-        }
-
-
-        //Destroy se encuentra el registro para luego eliminarlo..
-    public function destroy(Apprentice $apprentice){
-
-    $apprentice->delete();
-
-    return redirect()->route('apprentice.index');
     }
-}
 
 
+    //Destroy se encuentra el registro para luego eliminarlo..
+    public function destroy(Apprentice $apprentice)
+    {
+
+        $apprentice->delete();
+
+        return redirect()->route('apprentice.index');
+    }
+
+ }

@@ -5,7 +5,8 @@
 
     <div class="card shadow-lg border-0">
 
-        <div class="card-header bg-primary text-white">
+        <!-- Encabezado con Verde SENA -->
+        <div class="card-header text-white" style="background-color: #16780c;">
             <h3 class="mb-0">
                 {{ $training_center['name'] }}
             </h3>
@@ -61,7 +62,9 @@
 
     <div class="d-flex justify-content-end mt-4">
 
-        <a href="{{ route('training_center.index') }}" class="btn btn-success"><i class="bi bi-arrow-left"></i> Volver </a>
+        <a href="{{ route('training_center.index') }}" class="btn text-white" style="background-color: #16780c; border-color: #16780c;">
+            <i class="bi bi-arrow-left"></i> Volver 
+        </a>
 
     </div>
     <br>

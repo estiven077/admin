@@ -74,12 +74,18 @@ Route::get('apprentice/{apprentice}/editar',[ApprenticeController::class,'edit']
 
 
 // Teacher
-Route::get('teacher/create', [TeacherController::class, 'create'])->name('teacher.create');
-Route::post('teacher/store', [TeacherController::class, 'store'])->name('teacher.store');
-Route::get('teacher/index',[TeacherController::class,'index'])->name('teacher.index');
-Route::get('teacher/show/{teacher}', [TeacherController::class, 'show'])->name('teacher.show');
-Route::put('teacher/{teacher}',[TeacherController::class,'update'])->name('teacher.update');
-Route::delete('teacher/{teacher}',[TeacherController::class,'destroy'])->name('teacher.destroy');
-Route::get('teacher/{teacher}/editar',[TeacherController::class,'edit'])->name('teacher.edit');
+Route::get('/teacher/create', [TeacherController::class, 'create'])->name('teacher.create');
+Route::post('/teacher/store', [TeacherController::class, 'store'])->name('teacher.store');
+
+// Redirige al formulario si intentan entrar por GET a /teacher/store
+Route::get('/teacher/store', function () {
+    return redirect()->route('teacher.create');
+});
+
+Route::get('/teacher/index',[TeacherController::class,'index'])->name('teacher.index');
+Route::get('/teacher/show/{teacher}', [TeacherController::class, 'show'])->name('teacher.show');
+Route::put('/teacher/{teacher}',[TeacherController::class,'update'])->name('teacher.update');
+Route::delete('/teacher/{teacher}',[TeacherController::class,'destroy'])->name('teacher.destroy');
+Route::get('/teacher/{teacher}/editar',[TeacherController::class,'edit'])->name('teacher.edit');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');

@@ -3,21 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Teacher; 
-use App\Models\Area; 
-use App\Models\Training_center; 
+use App\Models\Teacher;
+use App\Models\Area;
+use App\Models\Training_center;
 
 class TeacherController extends Controller
 {
-    public function index(){
-       // Carga los instructores trayendo su área y centro de formación
+    public function index()
+    {
+        // Carga los instructores trayendo su área y centro de formación
         $teachers = Teacher::with(['area', 'training_center'])->get();
 
         return view('teacher.index', compact('teachers'));
     }
 
-
-    public function create(){
+    public function create()
+    {
 
         $training_centers = Training_center::all();
         $areas = Area::all();
@@ -25,47 +26,54 @@ class TeacherController extends Controller
         return view('teacher.create', compact('training_centers', 'areas'));
     }
 
+    public function store(Request $request)
+    {
 
-    public function store(Request $request){
-
+        // Mantiene tu lógica de guardado masivo para incluir todos los datos del formulario
         $teacher = Teacher::create($request->all());
 
-        return $teacher;
+        return redirect()->route('teacher.index');
     }
 
+    public function show(Teacher $teacher)
+    {
 
-
-    public function show(Teacher $teacher){
-
-    //$teacher = Teacher::find($id);
-
-    return view('teacher.show', compact('teacher'));
+        return view('teacher.show', compact('teacher'));
     }
 
+    public function edit(Teacher $teacher)
+    {
 
+        // Carga las relaciones necesarias para los select de la vista de edición
+        $training_centers = Training_center::all();
+        $areas = Area::all();
 
-    public function edit(Teacher $teacher){
-
-    //Encuentro el Instructor
-    return view('teacher.edit', compact('teacher'));
+        return view('teacher.edit', compact('teacher', 'training_centers', 'areas'));
     }
 
+    public function update(Request $request, Teacher $teacher)
+    {
 
-
-    public function update(Request $request, Teacher $teacher){
-
+        // Datos básicos existentes
         $teacher->name = $request->name;
         $teacher->email = $request->email;
         $teacher->area_id = $request->area_id;
         $teacher->training_center_id = $request->training_center_id;
+
+        // Nuevos datos
+        $teacher->age = $request->age;
+        $teacher->phone = $request->phone;
+        $teacher->profession = $request->profession;
+        $teacher->photo = $request->photo; // Corrección: 'photo' en lugar de 'education'
+        $teacher->biography = $request->biography;
+
         $teacher->save();
 
         return redirect()->route('teacher.index');
     }
 
-
-    
-    public function destroy(Teacher $teacher){
+    public function destroy(Teacher $teacher)
+    {
 
         $teacher->delete();
 

@@ -20,32 +20,32 @@
         </thead>
         <tbody>
 
-        <a href="{{ route('apprentice.create') }}" class="btn btn-success mb-3">
-            <i class="bi bi-plus-circle"></i> Nuevo Aprendiz </a>
+            <a href="{{ route('apprentice.create') }}" class="btn btn-success mb-3">
+                <i class="bi bi-plus-circle"></i> Nuevo Aprendiz </a>
 
             @foreach ($apprentices as $apprentice)
-                <tr>
-                    <td>{{ $apprentice->id }}</td>
-                    <td>{{ $apprentice->name }}</td>
-                    <td>{{ $apprentice->email }}</td>
-                    <td>{{ $apprentice->cell_number }}</td>
-                    <td>{{ $apprentice->course?->course_number }}</td>
-                    <td>{{ $apprentice->computer?->number }}</td>
+            <tr>
+                <td>{{ $apprentice->id }}</td>
+                <td>{{ $apprentice->name }}</td>
+                <td>{{ $apprentice->email }}</td>
+                <td>{{ $apprentice->cell_number }}</td>
+                <td>{{ $apprentice->course?->course_number }}</td>
+                <td>{{ $apprentice->computer?->number }}</td>
 
-                    <td>
-                        <a href="{{ route('apprentice.show', $apprentice->id) }}">Mostrar</a>
-                    </td>
-                    <td>
-                        <a href="{{ route('apprentice.edit', $apprentice->id) }}">Editar</a>
-                    </td>
-                    <td>
-                        <form action="{{ route('apprentice.destroy', $apprentice->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                        </form>
-                    </td>
-                </tr>
+                <td>
+                    <a href="{{ route('apprentice.show', $apprentice->id) }}">Mostrar</a>
+                </td>
+                <td>
+                    <a href="{{ route('apprentice.edit', $apprentice->id) }}">Editar</a>
+                </td>
+                <td>
+                    <form action="{{ route('apprentice.destroy', $apprentice->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
             @endforeach
         </tbody>
     </table>

@@ -9,20 +9,15 @@ class Training_center extends Model
 {
     use HasFactory;
 
+    // Campos permitidos para asignación masiva
     protected $fillable = [
         'name',
-        'email',
-        'area_id',
-        'training_center_id',
+        'location',
     ];
 
-    public function area()
+    // Relación: Un Centro de Formación tiene muchos instructores
+    public function teachers()
     {
-        return $this->belongsTo('App\Models\Area', 'area_id');
-    }
-
-    public function trainingCenter()
-    {
-        return $this->belongsTo('App\Models\Training_center', 'training_center_id');
+        return $this->hasMany(Teacher::class);
     }
 }

@@ -13,25 +13,30 @@ return new class extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); 
+            $table->string('name');
             $table->string('email');
 
-            //laves foraneas
-            $table->unsignedBigInteger('area_id')>nullable();
-            $table->foreign('area_id')
-                ->references('id') 
-                ->on('areas') 
-                ->onDelete('cascade') 
-                ->onUpdate('cascade') 
-            ;
+            // Campos adicionales para el perfil
+            $table->integer('age')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('profession')->nullable();
+            $table->string('photo')->nullable();
+            $table->text('biography')->nullable();
 
-            $table->unsignedBigInteger('training_center_id')>nullable();
+            // Llaves foráneas
+            $table->unsignedBigInteger('area_id')->nullable();
+            $table->foreign('area_id')
+                ->references('id')
+                ->on('areas')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->unsignedBigInteger('training_center_id')->nullable();
             $table->foreign('training_center_id')
-                ->references('id') 
-                ->on('training_centers') 
-                ->onDelete('cascade') 
-                ->onUpdate('cascade') 
-            ;
+                ->references('id')
+                ->on('training_centers')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
 
             $table->timestamps();
         });
