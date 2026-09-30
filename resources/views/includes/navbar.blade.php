@@ -1,15 +1,15 @@
 <!-- CSS Moderno y Elegante -->
 <style>
-    /* Elimina el azul por defecto de Bootstrap en el menú */
-    .dropdown-item:active, 
-    .dropdown-item:focus, 
+    
+    .dropdown-item:active,
+    .dropdown-item:focus,
     .dropdown-item.active {
         background-color: #16780c !important;
         color: #ffffff !important;
     }
 
-    .dropdown-item:active i, 
-    .dropdown-item:focus i, 
+    .dropdown-item:active i,
+    .dropdown-item:focus i,
     .dropdown-item.active i {
         color: #ffffff !important;
     }
@@ -130,7 +130,7 @@
                 </li>
             </ul>
 
-            <!-- BUSCADOR + INICIAR SESIÓN -->
+            <!-- BUSCADOR + INICIAR SESIÓN / CERRAR SESIÓN -->
             <div class="d-flex align-items-stretch align-items-lg-center flex-column flex-lg-row gap-2 gap-lg-3">
 
                 <!-- BUSCADOR -->
@@ -145,10 +145,22 @@
                     </span>
                 </div>
 
-                <!-- INICIAR SESIÓN -->
-                <a class="btn btn-login-sena px-3 py-1 fs-6 d-flex align-items-center justify-content-center fw-bold" href="{{ url('/login') }}">
+                <!-- SI EL USUARIO NO HA INICIADO SESIÓN -->
+                @guest
+                <a class="btn btn-login-sena px-3 py-1 fs-6 d-flex align-items-center justify-content-center fw-bold" href="{{ route('login') }}">
                     <i class="fas fa-user-circle me-1 fs-6"></i> Iniciar Sesión
                 </a>
+                @endguest
+
+                <!-- SI EL USUARIO YA INICIÓ SESIÓN -->
+                @auth
+                <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                    @csrf
+                    <button type="submit" class="btn btn-login-sena px-3 py-1 fs-6 d-flex align-items-center justify-content-center fw-bold w-100">
+                        <i class="fas fa-sign-out-alt me-1 fs-6"></i> Cerrar Sesión
+                    </button>
+                </form>
+                @endauth
 
             </div>
 

@@ -4,7 +4,8 @@
     
     <h1>Formulario Registrar Computador</h1>
     
-    <form action="{{ route('computer.store') }}" method="POST">
+    <!-- 1. Agregamos enctype="multipart/form-data" para permitir envío de archivos -->
+    <form action="{{ route('computer.store') }}" method="POST" enctype="multipart/form-data">
 
         @csrf
 
@@ -22,8 +23,16 @@
         </label>
         <br><br>
 
+        <!-- 2. Agregamos el input para subir la foto (el name debe ser 'urlFoto') -->
+        <label>
+            Foto del Computador:
+            <br>
+            <input type="file" name="urlFoto">
+        </label>
+        <br><br>
+
         <button type="submit">Enviar Formulario</button>
 
     </form>
 
-    @endsection
+@endsection

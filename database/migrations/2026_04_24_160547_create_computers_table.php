@@ -13,8 +13,12 @@ return new class extends Migration
     {
         Schema::create('computers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedinteger('number');
+            $table->unsignedInteger('number');
             $table->string('brand');
+
+            // Agregamos el campo de la foto permitiendo valores nulos
+            $table->string('urlFoto')->nullable();
+
             $table->timestamps();
         });
     }

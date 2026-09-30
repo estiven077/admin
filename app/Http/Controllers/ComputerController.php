@@ -10,8 +10,8 @@ class ComputerController extends Controller
     public function index(){
         
         $computers = Computer::all();
-
-        return view('computer.index', compact('computers'));
+        return response()->json($computers);
+       // return view('computer.index', compact('computers'));
     }
 
 
@@ -23,12 +23,29 @@ class ComputerController extends Controller
 
 
 
-    public function store(Request $request){
+   public function store(Request $request)
+{
+    // 1. Guarda en la BD todos los datos enviados (number, brand, etc.) excepto urlFoto
+    $computer = Computer::create($request->all());
 
-        $computer = Computer::create($request->all());
+    // 2. Comprueba si se envió un archivo en el input con name="urlFoto"
+    if ($request->hasFile('urlFoto')) {
+        $file = $request->file('urlFoto');
 
-        return $computer;
+        // Genera un nombre único usando la fecha/hora en segundos (ejemplo: foto_1715000000.png)
+        $nombreArchivo = "foto_" . time() . "." . $file->guessExtension();
+
+        // Mueve la foto a la carpeta: storage/app/public/images
+        $file->storeAs('public/images', $nombreArchivo);
+
+        // Asigna el nombre de la foto al atributo del modelo y guarda los cambios
+        $computer->urlFoto = $nombreArchivo;
+        $computer->save();
     }
+
+    // 3. Redirige a la tabla de computadores
+    return redirect()->route('computer.index');
+}
 
 
 

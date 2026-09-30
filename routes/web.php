@@ -8,6 +8,7 @@ use App\Http\Controllers\ApprenticeController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,3 +90,8 @@ Route::delete('/teacher/{teacher}',[TeacherController::class,'destroy'])->name('
 Route::get('/teacher/{teacher}/editar',[TeacherController::class,'edit'])->name('teacher.edit');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Rutas de inicio de sesión
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
