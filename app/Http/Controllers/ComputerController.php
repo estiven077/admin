@@ -44,7 +44,8 @@ class ComputerController extends Controller
     }
 
     // 3. Redirige a la tabla de computadores
-    return redirect()->route('computer.index');
+    //return redirect()->route('computer.index');
+     return response()->json($computer);
 }
 
 
@@ -53,7 +54,8 @@ class ComputerController extends Controller
 
         //$computer = Computer::find($id);
 
-        return view('computer.show', compact('computer'));
+        //return view('computer.show', compact('computer'));
+         return response()->json($computer);
     }
 
 
@@ -61,7 +63,8 @@ class ComputerController extends Controller
     public function edit(Computer $computer){
 
         //Encuentro el Computador
-        return view('computer.edit', compact('computer'));
+        //return view('computer.edit', compact('computer'));
+        return response()->json($computer);
     }
 
 
@@ -72,7 +75,8 @@ class ComputerController extends Controller
         $computer->brand = $request->brand;
         $computer->save();
 
-        return redirect()->route('computer.index');
+        //return redirect()->route('computer.index');
+        return response()->json($computer);
     }
 
 
@@ -81,6 +85,7 @@ class ComputerController extends Controller
 
         $computer->delete();
 
-        return redirect()->route('computer.index');
+        //return redirect()->route('computer.index');
+        return response()->json($computer);
     }
  }

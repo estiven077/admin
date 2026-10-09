@@ -14,7 +14,8 @@ class CourseController extends Controller
     // Carga los cursos junto con sus relaciones de área y centro de formación
     $courses = Course::with(['area', 'training_Center'])->get();
 
-    return view('course.index', compact('courses'));
+    //return view('course.index', compact('courses'));
+    return response()->json($courses);
     }
 
 
@@ -31,7 +32,8 @@ class CourseController extends Controller
 
         $course = Course::create($request->all());
 
-        return $course;
+        //return $course;
+        return response()->json($course);
     }
 
 
@@ -40,7 +42,8 @@ class CourseController extends Controller
 
     //$course = Course::find($id);
 
-    return view('course.show', compact('course'));
+    //return view('course.show', compact('course'));
+     return response()->json($course);
     }
 
 
@@ -48,7 +51,8 @@ class CourseController extends Controller
     public function edit(Course $course){
 
     //Encuentro el Curso
-    return view('course.edit', compact('course'));
+    //return view('course.edit', compact('course'));
+     return response()->json($course);
     }
 
 
@@ -61,7 +65,8 @@ class CourseController extends Controller
         $course->training_center_id = $request->training_center_id;
         $course->save();
 
-        return redirect()->route('course.index');
+        //return redirect()->route('course.index');
+         return response()->json($course);
     }
 
 

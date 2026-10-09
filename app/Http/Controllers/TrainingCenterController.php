@@ -10,7 +10,8 @@ class TrainingCenterController extends Controller
     public function index(){
         $training_centers=Training_center::all();
 
-        return view('training_center.index', compact('training_centers'));
+        //return view('training_center.index', compact('training_centers'));
+         return response()->json($training_centers);
     }
 
 
@@ -23,7 +24,8 @@ class TrainingCenterController extends Controller
     {
         $training_center = Training_center::create($request->all());
         
-        return $training_center;
+        //return $training_center;
+        return response()->json($training_center);
     }
 
 
@@ -32,7 +34,8 @@ class TrainingCenterController extends Controller
 
     //$training_center = Training_center::find($id);
 
-    return view('training_center.show', compact('training_center'));
+    //return view('training_center.show', compact('training_center'));
+    return response()->json($training_center);
     }
 
 
@@ -40,7 +43,8 @@ class TrainingCenterController extends Controller
     public function edit(Training_center $training_center){
 
     //Encuentro el Centro de Formación
-    return view('training_center.edit', compact('training_center'));
+   // return view('training_center.edit', compact('training_center'));
+   return response()->json($training_center);
     }
 
 
@@ -51,14 +55,16 @@ class TrainingCenterController extends Controller
         $training_center->location = $request->location;
         $training_center->save();
 
-        return redirect()->route('training_center.index');
+        //return redirect()->route('training_center.index');
+        return response()->json($training_center);
     }
 
     public function destroy(Training_center $training_center){
 
         $training_center->delete();
 
-        return redirect()->route('training_center.index');
+        //return redirect()->route('training_center.index');
+        return response()->json($training_center);
     }
 
 }

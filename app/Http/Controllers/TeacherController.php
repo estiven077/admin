@@ -14,7 +14,8 @@ class TeacherController extends Controller
         // Carga los instructores trayendo su área y centro de formación
         $teachers = Teacher::with(['area', 'training_center'])->get();
 
-        return view('teacher.index', compact('teachers'));
+       // return view('teacher.index', compact('teachers'));
+       return response()->json($teachers);
     }
 
     public function create()
@@ -32,13 +33,15 @@ class TeacherController extends Controller
         // Mantiene tu lógica de guardado masivo para incluir todos los datos del formulario
         $teacher = Teacher::create($request->all());
 
-        return redirect()->route('teacher.index');
+        //return redirect()->route('teacher.index');
+        return response()->json($teacher);
     }
 
     public function show(Teacher $teacher)
     {
 
-        return view('teacher.show', compact('teacher'));
+        //return view('teacher.show', compact('teacher'));
+        return response()->json($teacher);
     }
 
     public function edit(Teacher $teacher)
@@ -48,7 +51,8 @@ class TeacherController extends Controller
         $training_centers = Training_center::all();
         $areas = Area::all();
 
-        return view('teacher.edit', compact('teacher', 'training_centers', 'areas'));
+        //return view('teacher.edit', compact('teacher', 'training_centers', 'areas'));
+        return response()->json(compact('teacher', 'training_centers', 'areas'));
     }
 
     public function update(Request $request, Teacher $teacher)
@@ -69,7 +73,8 @@ class TeacherController extends Controller
 
         $teacher->save();
 
-        return redirect()->route('teacher.index');
+        //return redirect()->route('teacher.index');
+        return response()->json($teacher);
     }
 
     public function destroy(Teacher $teacher)
@@ -77,6 +82,7 @@ class TeacherController extends Controller
 
         $teacher->delete();
 
-        return redirect()->route('teacher.index');
+        //return redirect()->route('teacher.index');
+        return response()->json($teacher);
     }
 }
