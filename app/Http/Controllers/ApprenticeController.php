@@ -14,7 +14,7 @@ class ApprenticeController extends Controller
     {
         $query = $request->input('search');
 
-        $apprentices = Apprentice::when($query, function ($q) use ($query) {
+        $apprentices = Apprentice::with(['course', 'computer'])->when($query, function ($q) use ($query) {
             return $q->where('name', 'LIKE', "%{$query}%");
         })->get();
 
